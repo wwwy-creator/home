@@ -2,7 +2,8 @@
 
 ## never too young to study
 
-###2019-07-16
+### 2019-07-16
+
     《跟老男孩学Linux运维：shell编程实战》
     1） while 循环   usleep 1000 #睡眠1000微秒
     2） 脚本开发规范：尽量模块化和变量化
@@ -14,7 +15,7 @@
     8） dos2unix 转换 dos 和 unix 编码格式
     9） 合格的运维人员必会的脚本列表
 
-###2019-07-17
+### 2019-07-17
 
     《跟老男孩学Linux运维：shell编程实战》
     1）产生随机数的方法：
@@ -82,7 +83,8 @@
         > rm .git 即可
 
 
-###2019-07-18
+### 2019-07-18
+
        《GitHub入门与实践》
        发送pull request 的规范
        在 GitHub 上 fork 仓库
@@ -104,7 +106,8 @@
        git add ­-i       # 使用交互式界面选择需要添加的文件
 
 
-###2019-07-19
+### 2019-07-19
+
 《Git 手册》
         git config 配置文件所在位置：
         git config --system         /etc/gitconfig             系统
@@ -151,7 +154,8 @@
         vim .gitignore          #将xxx 添加到.gitignore文件中并提交，此后xxx 文件将不会再被跟踪也不会在git status 中显示 xxx untracted 等信息
 
 
-###2019-07-20
+### 2019-07-20
+
         《Git pro2》
         移动文件：
         git 不能够显式跟踪文件移动操作，若在git中重命名了某个文件，git不会理解这是一个改名操作，而是认为删除了一个文件
@@ -202,7 +206,8 @@
 明天开始先阅读 markdown 语法吧，晚安@-@
 
 
-### 2019-07-21
+### 2019-07-21     
+
 今天就先开始学习一下markdown的语法吧
 
 《markdown语法说明》（简体中文版)
@@ -280,3 +285,5 @@ git branch -d name-br   # 删除无用的分支
 合并就是移动master指针，如果当前master指向的提交就是当前提交的直接上游，这也被称为"快进(fast-forward)"
 
 合并分支时请先切换到master分支
+
+pause
