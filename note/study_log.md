@@ -286,4 +286,9 @@ git branch -d name-br   # 删除无用的分支
 
 合并分支时请先切换到master分支
 
-pause
+**从远程拉取**      
+git fetch origin
+git merge origin/servefix
+由于git pull的魔法经常令人困惑所以通常显示的使用fetch与merge命令更好些。
+
+到此就告一段落了git
