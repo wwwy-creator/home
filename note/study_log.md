@@ -269,11 +269,11 @@ Now to learn git branch 上接 line190
 
 git branch 相当于C语言的指针，如下图        
 
-![git branch]()
+![git branch](https://raw.githubusercontent.com/way-ww/mypic/master/note/HEAD.png)
 
 HEAD是个特殊的指针，它指向当前所在分支，可以想像为当前分支的别名        
 
-![HEAD]()           
+![HEAD](https://raw.githubusercontent.com/way-ww/mypic/master/note/HEAD2.png)           
 
 当执行 `git checkout master` 后HEAD指正从分支重新指回master且将工作目录恢复成master分支所指向的快照内容
 
