@@ -1,8 +1,0 @@
-#!/usr/bin/expect
-spawn sh /home/ww/sh/test_expect.sh
-expect {
-        "name" {send "wangwan\r";exp_continue}
-        "age" {send "21\r";exp_continue}
-        "*girfriend*" {send "wangyue\r"}
-}
-expect eof

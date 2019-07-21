@@ -1,8 +1,0 @@
-<鸟哥的Linux私房菜服务器篇 page236>
-使用nmap软件扫描局域网中的主机 
-nmap -sP 192.168.43.0/24    #以ping 的方式进行扫描
-nmap localhost  #检查本地开启的端口
-
-
-vim 列操作
-ctrl + v 选取列，然后shift + i 输入需要插入的内容，最后按esc
