@@ -262,4 +262,21 @@ printf("This is a code block with highlight")
 ```
 Now to learn git branch 上接 line190
 
+git branch 相当于C语言的指针，如下图        
 
+![git branch]()
+
+HEAD是个特殊的指针，它指向当前所在分支，可以想像为当前分支的别名        
+
+![HEAD]()           
+
+当执行 `git checkout master` 后HEAD指正从分支重新指回master且将工作目录恢复成master分支所指向的快照内容
+
+频繁的创建使用git分支能够带来很好的体验
+
+### P61~P75 优秀的branch讲解        
+
+git branch -d name-br   # 删除无用的分支
+合并就是移动master指针，如果当前master指向的提交就是当前提交的直接上游，这也被称为"快进(fast-forward)"
+
+合并分支时请先切换到master分支
