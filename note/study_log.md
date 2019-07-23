@@ -327,4 +327,14 @@ git merge origin/servefix
 - hexo d
 - ok.
 
+写博客内容：
+title:
+date:
+descriptin:
+categories:
+tags:
+comments:       
 
+---
+
+<!--more>
