@@ -178,6 +178,8 @@ set number
 set cursorline
 " 高亮显示搜索结果
 set hlsearch
+"esc键清除高亮搜索
+nnoremap <C-L> :nohl<cr>
 "指定配色方案为256
 set t_Co=256 
 "设置可以在VIM使用鼠标
