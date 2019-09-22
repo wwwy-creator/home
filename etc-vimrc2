@@ -1,0 +1,189 @@
+filetype off
+set nocompatible
+set rtp+=/opt/bundle/Vundle.vim
+call vundle#begin('/opt/vim/bundle')
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Lokaltog/vim-powerline'
+Plugin 'lilydjwg/fcitx.vim'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'Yggdroot/indentLine'
+Plugin 'tell-k/vim-autopep8'
+Plugin 'hzchirs/vim-material'
+Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'maralla/completor.vim'
+Plugin 'iamcco/markdown-preview.vim'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+call vundle#end()
+filetype plugin indent on
+filetype plugin on
+let g:rbpt_colorpairs = [
+                        \ ['brown',       'RoyalBlue3'],
+                        \ ['Darkblue',    'SeaGreen3'],
+                        \ ['darkgray',    'DarkOrchid3'],
+                        \ ['darkgreen',   'firebrick3'],
+                        \ ['darkcyan',    'RoyalBlue3'],
+                        \ ['darkred',     'SeaGreen3'],
+                        \ ['darkmagenta', 'DarkOrchid3'],
+                        \ ['brown',       'firebrick3'],
+                        \ ['gray',        'RoyalBlue3'],
+                        \ ['darkmagenta', 'DarkOrchid3'],
+                        \ ['Darkblue',    'firebrick3'],
+                        \ ['darkgreen',   'RoyalBlue3'],
+                        \ ['darkcyan',    'SeaGreen3'],
+                        \ ['darkred',     'DarkOrchid3'],
+                        \ ['red',         'firebrick3'],
+                        \ ]
+let g:rbpt_max = 16
+let g:rbpt_loadcmd_toggle = 0
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+set background=light
+colorscheme vim-material
+set confirm             
+let g:indentLine_char='┊'
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+let g:indentLine_color_term = 239
+let g:indentLine_conceallevel = 2
+let g:indentLine_enabled = 1
+set autoindent
+set smartindent
+let g:autopep8_disable_show_diff=1
+autocmd FileType python noremap <buffer> <F8> :call Autopep8()<CR>
+autocmd BufNewFile *.cpp,*.[ch],*.sh,*.java,*.py exec ":call SetTitle()" 
+func SetTitle() 
+	if &filetype == 'sh'
+        call setline(1,"\#########################################################################") 
+        call append(line("."), "\# File Name: ".expand("%")) 
+        call append(line(".")+1, "\# Author: way") 
+        call append(line(".")+2, "\# mail: ww875749864@outlook.com") 
+        call append(line(".")+3, "\# Created Time: ".strftime("%c")) 
+        call append(line(".")+4, "\# Description:  ")
+        call append(line(".")+5, "\#########################################################################") 
+        call append(line(".")+6, "\#!/bin/bash") 
+        call append(line(".")+7, "") 
+
+	elseif &filetype == 'python'
+        call setline(1,"########################################################################") 
+        call append(line("."), "\# File Name: ".expand("%")) 
+        call append(line(".")+1, "\# Author: way") 
+        call append(line(".")+2, "\# mail: ww875749864@outlook.com") 
+        call append(line(".")+3, "\# Created Time: ".strftime("%c")) 
+        call append(line(".")+4, "\# Description:")
+        call append(line(".")+5, "\#########################################################################") 
+        call append(line(".")+6, "") 
+    else 
+        call setline(1, "/*************************************************************************") 
+        call append(line("."), "    > File Name: ".expand("%")) 
+        call append(line(".")+1, "    > Author: way") 
+        call append(line(".")+2, "    > Mail: ww875749864@outlook.com ") 
+        call append(line(".")+3, "    > Created Time: ".strftime("%c")) 
+        call append(line(".")+4, "    > Description:  ") 
+        call append(line(".")+5, " ************************************************************************/") 
+        call append(line(".")+6, "")
+    endif
+
+    if &filetype == 'cpp'
+        call append(line(".")+7, "#include<iostream>")
+        call append(line(".")+8, "using namespace std;")
+        call append(line(".")+9, "")
+    endif
+
+    if &filetype == 'c'
+        call append(line(".")+7, "#include<stdio.h>")
+        call append(line(".")+8, "")
+    endif
+
+endfunc 
+set splitbelow
+set splitright
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+map <F2> :NERDTreeToggle<CR>
+let NERDChristmasTree=1       
+let NERDTreeAutoCenter=1      
+let NERDTreeShowFiles=1       
+let NERDTreeShowLineNumbers=1 
+let NERDTreeHightCursorline=1 
+let NERDTreeShowHidden=0      
+let NERDTreeMinimalUI=0       
+let NERDTreeWinSize=31        
+let NERDTreeIgnore=['\.pyc$', '\~$'] 
+set backspace=2
+set encoding=utf-8
+set cindent
+syntax on
+syntax enable
+set expandtab
+set incsearch
+set ignorecase
+set wildmenu
+set laststatus=2
+set ruler
+set number
+set cursorline
+set hlsearch
+nnoremap <C-L> :nohl<cr>
+set t_Co=256 
+set mouse=v 
+set tabstop=4 
+set history=500 
+autocmd BufWritePost $MYVIMRC source $MYVIMRC
+au BufReadPost * if line("'\'") > 1 && line("'\'") <= line("$") | exe "normal! g'\"" | endif
+autocmd BufNewFile * normal G
+set wrap
+set linebreak
+set breakindent
+
+map <F5> :call CompileRunGcc()<CR>
+func! CompileRunGcc()
+        exec "w"
+        if &filetype == 'c'
+                exec "!g++ % -o %<"
+                exec "!time ./%<"
+        elseif &filetype == 'cpp'
+                exec "!g++ % -o %<"
+                exec "!time ./%<"
+        elseif &filetype == 'java'
+                exec "!javac %"
+                exec "!time java %<"
+        elseif &filetype == 'sh'
+                :!time bash %
+        elseif &filetype == 'python'
+                exec "!clear"
+                exec "!python3 %"
+        elseif &filetype == 'html'
+                exec "!firefox % &"
+        elseif &filetype == 'go'
+                " exec "!go build %<"
+                exec "!time go run %"
+        elseif &filetype == 'mkd'
+                exec "!~/.vim/markdown.pl % > %.html &"
+                exec "!firefox %.html &"
+        endif
+endfunc
+
+let g:completor_min_chars=3 
+let g:completor_python_binary = '/usr/bin/python'
+let python_highlight_all = 1
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
+let g:mkdp_path_to_chrome="/usr/bin/google-chrome-stable"
+let g:mkdp_auto_close=0
+map <F7> :MarkdownPreview<CR>
+map <F6> :MarkdownPreviewStop<CR>
+
+let g:vim_markdown_folding_disabled = 1 
+let g:vim_markdown_no_default_key_mappings = 1
+let g:vim_markdown_emphasis_multiline = 0
+let g:vim_markdown_conceal = 0
+let g:vim_markdown_frontmatter=1
+let g:tex_conceal = ""
+let g:vim_markdown_math = 1
+let g:vim_markdown_conceal_code_blocks = 0
